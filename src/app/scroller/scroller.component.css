@@ -1,0 +1,23 @@
+.wrapper {
+    margin-top: 50px;
+    border: 2px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+}
+::-webkit-scrollbar{
+    width: 5px;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(to right, lawngreen, white, white, white );
+    border-radius: 10px;
+}
+
+.wrapper .item {
+    min-width: 160px;
+    height: 160px;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    margin-right: 2px;
+}

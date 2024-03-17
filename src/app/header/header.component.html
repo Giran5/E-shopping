@@ -1,0 +1,242 @@
+<nav class="navbar nav1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="margin-left: 100px;"><i class="fa-brands fa-sass" style="font-size: 70px; color: lawngreen;"></i></a>
+
+    
+    
+      <div>
+        <input class=" me-2 searchbar shadow" type="search" placeholder="Search For Products, Brand and More" aria-label="Search">
+      </div>
+    
+
+    <!------------------------------------------MODAL--------------------------------------------------->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: lawngreen;">
+            <i class="fa-brands fa-sass" id="iconModal"></i>
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!------signin-creat account--------singn-up Login------->
+
+          <div class="modal-body" id="modal-body">
+            <h1 class="title fs-5" id="h1"><span id="spansignup">SIGN IN !</span></h1>
+            <div class=" container mt-4">
+
+              <form class="form-group" [formGroup]="usersigninForm" (ngSubmit)="loginFn()">
+
+               
+
+                <div class="mb-3">
+                  <span class="form-lable" id="lable" for="phoneNumber">Phone Number</span>
+                  <input type="text" class="form-control" placeholder="+91 Enter a Register Phone Number" id="phoneNumber"  formControlName="phoneNumber" [className]="{error: getSigninControl('phoneNumber')?.errors && getSigninControl('phoneNumber')?.touched}">
+                  <div *ngIf="getSigninControl('phoneNumber')?.errors && getSigninControl('phoneNumber')?.touched">
+                    <small class="text"  style="color: orangered;  font-family: Poppins;" *ngIf="getSigninControl('phoneNumber')?.errors?.['required']">*Phone Number is Required.</small>
+                    <small class="text"  style="color: orangered;  font-family: Poppins;" *ngIf="getSigninControl('phoneNumber')?.errors?.['maxlength'] || getSigninControl('phoneNumber')?.errors?.['minlength']">*Please check Number is InCorrect.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getSigninControl('phoneNumber')?.errors?.['pattern']">*Alphabet is Included Remove It Please.</small>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <span class="form-lable" id="lable" for="generateOtp">Enter OTP</span>
+                  <input type="text"  class="form-control" placeholder="Click Here For Send OTP" id="generateOtp"  formControlName="generateOtp" [className]="{error: getSigninControl('generateOtp')?.errors && getSigninControl('generateOtp')?.touched}">
+                  <div *ngIf="getSigninControl('generateOtp')?.errors && getSigninControl('generateOtp')?.touched">
+                    <small class="text"  style="color: orangered;  font-family: Poppins;" *ngIf="getSigninControl('generateOtp')?.errors?.['required']">*Please Wait OTP is Generating.</small>
+                    <small class="text"  style="color: orangered;  font-family: Poppins;" *ngIf="getSigninControl('generateOtp')?.errors?.['maxlength'] || getSigninControl('generateOtp')?.errors?.['minlength']">*Please Enter 6 Digits OTP Number. </small>
+                    
+                  </div>
+                </div>
+
+                <div class="mb-3  d-grid col-6 mx-auto">
+                  <button type="submit"  class="btn btn-dark shadow">Submit</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+          <!----<div class="modal-footer" style="background-color: orange;">
+            <p style="color: cornsilk; font-size: 12px;" >Is Already Our Customer ?</p>
+            <button class="btn shadow" style="background-color: cornsilk; --bs-btn-padding-y: .30rem; --bs-btn-padding-x: .5rem; font-weight: 600; color: orange;"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal">SIGN IN !</button>
+          </div>-->
+
+          <div class="modal-footer" style="background-color: lawngreen;">
+            <p style="color: black; font-size: 12px;">You are a New Customer ?</p>
+            <button class="btn shadow" style="background-color: black; --bs-btn-padding-y: .30rem; --bs-btn-padding-x: .5rem; font-weight: 600; color: lawngreen;" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">SIGN UP ?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+      tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: lawngreen;">
+            <i class="fa-brands fa-sass" id="iconModal"></i>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modal-body">
+
+            <h1 class="title fs-5" id="h1"><span id="spansignup">SIGN UP !</span></h1>
+    
+            <div class="container mt-4" >
+              <!---[formGroup]="registerForm" (ngSubmit)="registerFn()-->
+              <form [formGroup]="registerForm" (ngSubmit)="registerFn()">
+
+                <div class="mb-3">
+                  <label for="fname" class="form-lable" id="lable">First Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Your First Name" id="fname" formControlName="fname" [ngClass]="{error : getControl('fname')?.errors && getControl('fname')?.touched}">
+                  <div *ngIf="getControl('fname')?.errors && getControl('fname')?.touched">
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('fname')?.errors?.['required']">*First Name is Required.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('fname')?.errors?.['maxlength']">*Onley 32 Charecters are Allowed.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('fname')?.errors?.['pattern']">*Use Uppercase Onley.</small>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="lname" class="form-lable" id="lable">last Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Your last Name" id="lname" formControlName="lname" [ngClass]="{error : getControl('lname')?.errors && getControl('lname')?.touched}">
+                  <div *ngIf="getControl('lname')?.errors && getControl('lname')?.touched" >
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('lname')?.errors?.['required']">*First Name is Required.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('lname')?.errors?.['maxlength']">*Onley 32 Charecters are Allowed.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('lname')?.errors?.['pattern']">*Use Uppercase Only.</small>
+                  </div>
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="mobile" class="form-lable" id="lable">Phone Number</label>
+                  <input type="text" class="form-control" placeholder="+91  Enter Your Phone Number" id="mobile" formControlName="mobile" [ngClass]="{error : getControl('mobile')?.errors && getControl('mobile')?.touched}">
+                  <div class=""  *ngIf="getControl('mobile')?.errors && getControl('mobile')?.touched">
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('mobile')?.errors?.['required']">*phone number is must.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('mobile')?.errors?.['maxlength'] || getControl('mobile')?.errors?.['minlength']">*Please check Your Number Is Correct.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;"  *ngIf="getControl('mobile')?.errors?.['pattern']">*Alphabet is Included Please Remove It.</small>
+                  </div> 
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-lable" id="lable">Email</label>
+                  <input type="email" class="form-control" placeholder="Enter Your Email Address" id="email" formControlName="email" [ngClass]="{error : getControl('email')?.errors && getControl('email')?.touched}">
+                  <div *ngIf="getControl('email')?.errors && getControl('email')?.touched">
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('email')?.errors?.['required']">*Email is required.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;" *ngIf="getControl('email')?.errors?.['maxlength']">*Onley 32 Charecters are Allowed.</small>
+                    <small class="text" style="color: orangered;  font-family: Poppins;"  *ngIf="getControl('email')?.errors?.['pattern']">*Check The Email Address.</small>
+                  </div>
+                </div>
+                
+                
+
+                <div class="mb-3  d-grid col-6 mx-auto">
+                  <button type="submit"  class="btn btn-dark shadow">Submit</button>
+                </div>
+
+
+              </form>
+              
+            </div>
+          </div>
+          <div class="modal-footer" style="background-color: lawngreen;">
+            <p style="color: black; font-size: 12px;  font-family: Poppins; font-weight: 700;" >Is Already Our Customer ?</p>
+            <button class="btn shadow" style="background-color: black; --bs-btn-padding-y: .30rem; --bs-btn-padding-x: .5rem; font-weight: 600; color: lawngreen;"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal">SIGN IN !</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btnlogin shadow" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><span style="font-size: 19px;"><i class="fa-regular fa-circle-user"></i></span>  USERS <span><i class="fa-solid fa-angles-right"></i></span></button>
+
+  </div>
+
+
+</nav>
+
+
+
+
+<nav class="navbar nav2 sticky-top shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand brandname" href="#"></a>
+    <div class="d-inline-flex gap-4   " style="margin-right: 80px;">
+      <!-------------------------------------------------FOR -HOME BUTTONS--------------------------------------------------->
+      <a routerLink="/home" class="link"><button type="button" class="btn navbtn">HOME</button></a>
+
+      <!----------------------------------------------------FOR MENS COLLECTION BUTTON-------------------------------------------------------------------->
+      <div class="btn-group">
+        <button type="button" routerLinkActive="active" class="btn navbtn" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <div><span>MENs </span> <i class="fa-solid fa-caret-down"></i></div>
+        </button>
+        <ul class="dropdown-menu" id="dropdown-menu1">
+          <li><a href="">SHIRTs</a></li>
+          <li><a href="">GEANs</a></li>
+          <li><a href="">COATs</a></li>
+          <li><a href="">GADGETs</a></li>
+          <li><a href="">SHOEs</a></li>
+          <li><a href="">TRIMMER</a></li>
+          <li><a href="">sweff</a></li>
+          <li><a href="">sweff</a></li>
+          <li><a href="">sweff</a></li>
+        </ul>
+      </div>
+
+      <!------------------------------------------FOR WOMENS BUTTON--------------------------------------------------->
+      <div class="btn-group">
+        <button type="button" routerLinkActive="active" class="btn navbtn" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <div><span>WOMENs </span> <i class="fa-solid fa-caret-down"></i></div>
+        </button>
+        <ul class="dropdown-menu" id="dropdown-menu2">
+          <li><a href="">womens</a></li>
+          <li><a href="">womens</a></li>
+          <li><a href="">womens</a></li>
+          <li><a href="">womens</a></li>
+          <li><a href="">womens</a></li>
+          <li><a href="">womens</a></li>
+        </ul>
+      </div>
+      <!---------------------------------------KIDS------------------------------------------------------>
+      <div class="btn-group">
+        <button type="button" routerLinkActive="active" class="btn navbtn" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <div><span> KIDs </span> <i class="fa-solid fa-caret-down"></i></div>
+        </button>
+        <ul class="dropdown-menu" id="dropdown-menu3">
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+          <li><a href="">KIDS</a></li>
+        </ul>
+      </div>
+      <!----------------------------------------------HOME AND LIVING------------------------------------------------------------->
+      <div class="btn-group">
+        <button type="button" routerLinkActive="active" class="btn navbtn" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <div><span>HOME & LIVING </span> <i class="fa-solid fa-caret-down"></i></div>
+        </button>
+        <ul class="dropdown-menu" id="dropdown-menu4">
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+          <li><a href="" routerLinkActive="active">LIVING</a></li>
+        </ul>
+      </div>
+
+
+      <a routerLink="/beauty" routerLinkActive="active" class="link"><button type="button" class="btn navbtn">
+          BEAUTY</button></a>
+      <a href="" class="link"><button type="button" routerLinkActive="active" class="btn navbtn"> STUDIO</button></a>
+      <a href="" class="link"><button type="button" routerLinkActive="active" class="btn navbtn" id="user1"><span style="font-size: 17px;"><i class="fa-solid fa-cart-shopping"></i></span> YOUR ORDERS</button></a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,69 @@
+.s-image {
+    padding: 15px;
+    width: 600px;
+    margin-right: 5px;
+}
+.tittle {
+    font-size: 60px;
+    font-family: "Poppins", sans-serif;
+}
+.description {
+    font-size: 40px;
+    line-height: 45px;
+    font-family: "Poppins", sans-serif;
+}
+.d-info {
+    font-size: 20px;
+    line-height: 30px;
+    font-family: "Poppins", sans-serif;
+}
+.background  {
+    background-color: whitesmoke;
+}
+
+
+
+
+.l-image {
+    width: 600px;
+    height: 700px;
+}
+.tittle1 {
+    font-size: 35px;
+    color: darkgreen;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+}
+.description1 {
+    font-size: 25px;
+    line-height: 45px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+.d-info1 {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.section {
+    width: 900px;
+    height: 100px;
+}
+
+#sec1 {
+    position: relative;
+    display: flex;
+    list-style: none;
+}
+
+
+
+
+
+#card1 {
+    width: 200px;
+    height: 200px;
+}
+
+
+
